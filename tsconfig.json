@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "lib": ["es2021"],
+    "module": "CommonJS",
+    "outDir": "./dist/",
+    "target": "es6",
+    "rootDir": "./",
+    "esModuleInterop": true,
+    "sourceMap": true
+  },
+  "include": [
+    "./**/*.ts"
+  ],
+  "ts-node": {
+    // Tell ts-node CLI to install the --loader automatically, explained below
+    "esm": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "test"
+  ]
+}

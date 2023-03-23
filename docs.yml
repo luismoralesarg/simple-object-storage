@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: Object Storage Service API
+  version: 1.0.0
+  description: RESTful API for storing and retrieving objects in a directory-based object storage service
+servers:
+  - url: http://localhost:3000
+paths:
+  /objects/{bucketName}/{key}:
+    get:
+      summary: Retrieve an object from a bucket by key
+      parameters:
+        - name: bucketName
+          in: path
+          description: The name of the bucket to retrieve the object from
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          description: The key of the object to retrieve
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Object retrieved successfully
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+        '500':
+          description: Internal server error
+    put:
+      summary: Store/Edit an object in a bucket with a key
+      parameters:
+        - name: bucketName
+          in: path
+          description: The name of the bucket to store the object in
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          description: The key to use for the object
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The object to store
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Object stored successfully
+        '500':
+          description: Internal server error
